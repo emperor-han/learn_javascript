@@ -1,2 +1,10 @@
-1.offsetLeft 获取的是数值。而left 获取的是字符串。
+1.offsetLeft 获取的是数值。比如20 ，而left 获取的是字符串，就是20.
+
+2.offsetLeft 和 left 的值都是相对于最近的已经定位的父包含元素，如果没有找到，就以html 元素为准。
+
+3.offsetLeft是只读的，即可以通过这个属性获取该元素距离已定位的父元素左边的距离，但是不能通过它改变这个距离，style.left是可读可写的，即可以通过它改变上面说的那个距离。
+
+4.style.left 必须定义到HTML代码中，不然获取不到这个值，offsetLeft则没有这个限制
+
+5.top ，right, bottom 则与之类似。
 
