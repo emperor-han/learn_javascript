@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>left</title>
+	<style>
+		.box1{
+			width: 200px;
+			height: 200px;
+			border:1px solid gold;
+			margin-left: 100px;
+			left: 200px;
+		}
+		.box2{
+			width: 500px;
+			height: 500px;
+			border:1px solid blue;
+            margin-left: 100px;
+            position: relative;
+		}
+	</style>
+</head>
+<body>
+   <div class="box2">
+	  <div class="box1" id="box1"></div>
+   </div>
+</body>
+<script>
+ 
+  function $(selector){
+  	return document.getElementById(selector);
+  }
+  alert($('box1').offsetLeft);
+</script>
+</html>
