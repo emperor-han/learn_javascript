@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>more_object_animate</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style: none;
+			width: 300px;
+			height: 100px;
+			background: gold;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+		window.onload = function() {
+			var li_array = document.getElementsByTagName('li');
+			for(var i=0,len=li_array.length;i<len;i++){
+				li_array[i].timer = null;
+				li_array[i].onmouseover = function(){
+					
+					startMove(this,400);
+				}
+				li_array[i].onmouseout = function(){
+					startMove(this,300);
+				}
+			}
+		}
+		
+		function startMove(obj,mytarget) {
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+			    	var speed = (mytarget - obj.offsetWidth)/10;
+			    	    speed = speed>0?Math.ceil(speed):Math.floor(speed);
+			    	if(obj.offsetWidth === mytarget){
+			    		clearInterval(obj.timer);
+			    	}else{
+			    		obj.style.width = obj.offsetWidth + speed + 'px';
+			    	}
+			    },30);
+		}
+	</script>
+</body>
+</html>
