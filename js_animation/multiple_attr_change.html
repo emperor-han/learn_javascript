@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>multiple_attr_change</title>
+	<style>
+		li{
+			width: 300px;
+			height: 200px;
+			background: gold;
+			margin-bottom: 20px;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li id="li1"></li>
+		<li id="li2"></li>
+	</ul>
+	<script>
+		window.onload = function() {
+			var li1 = document.getElementById('li1');
+			var li2 = document.getElementById('li2');
+			li1.onmouseover = function(){
+				startMove(this,"width",400)
+			}
+			li1.onmouseout = function(){
+				startMove(this,"width",300)
+			}
+			li2.onmouseover = function(){
+				startMove(this,"height",400)
+			}
+			li2.onmouseout = function(){
+				startMove(this,"height",200)
+			}
+		}
+
+		function startMove(obj,attr,myTarget){
+		    
+			clearInterval(obj.timer);
+			
+			obj.timer = setInterval(function(){
+				var speed = (myTarget-parseInt(getStyle(obj,attr)))/10;
+				    speed = speed>0?Math.ceil(speed):Math.floor(speed);
+				if(parseInt(getStyle(obj,attr)) === myTarget){
+					
+					clearInterval(obj.timer);
+				}else{
+					
+					obj.style[attr] = parseInt(getStyle(obj,attr)) + speed + 'px';
+					
+				}
+			},30);
+		}
+		function getStyle(obj,attr) {
+  
+        return getComputedStyle(obj,false)[attr];
+   
+}
+	</script>
+</body>
+</html>
