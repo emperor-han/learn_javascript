@@ -11,17 +11,23 @@
 			margin-bottom: 20px;
 			list-style: none;
 		}
+		#li3{
+			opacity: 0.3;
+		}
 	</style>
 </head>
 <body>
 	<ul>
 		<li id="li1"></li>
 		<li id="li2"></li>
+		<li id="li3"></li>
 	</ul>
 	<script>
 		window.onload = function() {
-			var li1 = document.getElementById('li1');
-			var li2 = document.getElementById('li2');
+			var li1 = document.getElementById('li1'),
+			    li2 = document.getElementById('li2'),
+			    li3 = document.getElementById('li3');
+			
 			li1.onmouseover = function(){
 				startMove(this,"width",400)
 			}
@@ -34,26 +40,44 @@
 			li2.onmouseout = function(){
 				startMove(this,"height",200)
 			}
+			li3.onmouseover = function(){
+				startMove(this,"opacity",100)
+			}
+			li3.onmouseout = function(){
+				startMove(this,"opacity",30)
+			}
 		}
 
-		function startMove(obj,attr,myTarget){
+		function startMove(obj,attr,myTarget){//obj 表示给那个对象添加该运动，attr 表示该对象的什么属性运动改变，myTarget表示该对象运动要达到的目标值
 		    
 			clearInterval(obj.timer);
+			var cur_value = 0;
 			
 			obj.timer = setInterval(function(){
-				var speed = (myTarget-parseInt(getStyle(obj,attr)))/10;
-				    speed = speed>0?Math.ceil(speed):Math.floor(speed);
-				if(parseInt(getStyle(obj,attr)) === myTarget){
+				if(attr === 'opacity'){
+                   cur_value = parseFloat(getStyle(obj,attr))*100;
+				}else{
+				   cur_value = parseInt(getStyle(obj,attr));
+				}
+			 var   speed = (myTarget-cur_value)/10;
+                   speed = speed>0?Math.ceil(speed):Math.floor(speed);//是为了将speed变为整型，
+				    
+				if(cur_value === myTarget){
 					
 					clearInterval(obj.timer);
 				}else{
+					if(attr === 'opacity'){
+	                   obj.style[attr] = (cur_value + speed)/100;
+					}else{
+					   obj.style[attr] = cur_value + speed + 'px';
+					}
 					
-					obj.style[attr] = parseInt(getStyle(obj,attr)) + speed + 'px';
 					
 				}
 			},30);
-		}
-		function getStyle(obj,attr) {
+}
+
+function getStyle(obj,attr) {//该函数是为了获取内联样式
   
         return getComputedStyle(obj,false)[attr];
    
