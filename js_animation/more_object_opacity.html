@@ -1,0 +1,71 @@
+"use strict"
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>more_object_opacity</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: gold;
+			float: left;
+			margin-right: 20px;
+			opacity: 0.3;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div id="div1"></div>
+	<div></div>
+	<script>
+		window.onload = function(){
+			var div_array = document.getElementsByTagName('div');
+			for(var i=0,len=div_array.length;i<len;i++){
+				div_array[i].timer = null;
+				div_array[i].myOpacity = 30;
+				div_array[i].onmouseover = function(){
+					startMove(this,100);
+				}
+				div_array[i].onmouseout = function(){
+					startMove(this,30);
+				}
+			}
+			/*var div1 = document.getElementById('div1');
+			div1.timer = null;
+			div1.myOpacity = 0.3;
+			div1.onmouseover = function(){
+				startMove(this,1);
+			}*/
+		}
+		
+		function startMove(obj,myTarget){
+		    
+			clearInterval(obj.timer);
+			var speed = obj.myOpacity<myTarget?10:-10;
+			obj.timer = setInterval(function(){
+				
+				if(obj.myOpacity === myTarget){
+					
+					clearInterval(obj.timer);
+				}else{
+					obj.myOpacity += speed;
+					obj.style.opacity = (obj.myOpacity/100);
+					
+				}
+			},30);
+		}
+
+	</script>
+</body>
+</html>
+
+
