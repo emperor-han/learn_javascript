@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>speedChange</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+
+		}
+		.box1{
+			width: 200px;
+			height: 200px;
+			background: gold;
+			position: relative;
+			left: -200px;
+		}
+		.share{
+			position: absolute;
+			top:50%;
+			left: 200px;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1" id="box1">
+	     <span class="share">justshare</span>
+	</div>
+	<script>
+		window.onload = function(){
+            var box1 = $('box1');
+            var box1 = document.getElementById('box1');
+            box1.onmouseover = go(200);
+            box1.onmouseout = go(-200);
+            //console.log(box1.onmouseover);
+            	
+            
+		}
+
+        var timer = null;
+
+        function go(mytarget){
+            //console.log(mytarget);
+            return function(){
+            console.log(mytarget);
+        	clearInterval(timer);
+        	var box1 = $('box1');
+        	var speed = 0;
+        	timer = setInterval(function(){
+        		speed = (mytarget-box1.offsetLeft)/20;
+        		speed = speed>0?Math.ceil(speed):Math.floor(speed);
+        		if(box1.offsetLeft === mytarget){
+        			clearInterval(timer);
+        		}else{
+        			box1.style.left = box1.offsetLeft + speed + 'px';
+        		}
+        	},30);
+        }
+    }
+        
+		function $(selector){
+			return document.getElementById(selector);
+		}
+	</script>
+</body>
+</html>
