@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	    
+	  
+
+		window.onload = function(){
+			debugger;
+			var variable1,//定义变量1但没有赋值
+			    variable2 = 2;//定义变量2同时给其赋值
+			variable1 = 1;//给变量1赋值
+			function fun1(){//函数声明，定义 fun1 函数,没有返回值
+				alert("im in fun1");
+			}
+			function fun2(){//函数声明，定义 fun2 函数，有返回值
+				alert("im in fun2");
+				return 'returned value from fun2()';
+			}
+			var variable3 = function(){// 函数表达式，将变量3 variable3 指向一个匿名函数
+				alert("im in a anonymous function")
+			}
+			var variable4 = fun1;//相当于将变量4 variable4 指向fun1 函数，即 variable4 是fun1函数的一个引 作用就和变量3 variable3 指向一个匿名函数一样
+			var variable5 = fun1();//首先执行 fun1() 函数，即输出 "im in fun1" 字符串，然后执行赋值语句，虽然该函数没有返回值，默认返回 undefined，即 变量5 variable5='undefined'
+			var variable6 = fun2();//和变量5 的过程一样，只是fun2 函数有返回值，所以变量6 variable6='returned value from fun2()'
+		}
+	</script>
+</body>
+</html>

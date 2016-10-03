@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>meanwhile_animation</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		li{
+			width: 200px;
+			height: 200px;
+			background: gold;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li id="li1"></li>
+	</ul>
+	<script src="move.js"></script>
+	<script>
+		window.onload = function(){
+			var li1 = document.getElementById('li1');
+			li1.onmouseover = function(){
+                startMove(this,{'width':400,"height":300,"opacity":30},function(){
+                	alert(3336);
+                });
+
+			}
+		}
+	</script>
+</body>
+</html>

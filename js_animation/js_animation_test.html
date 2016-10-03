@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js_animation_test</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#move{
+			width: 400px;
+			height: 200px;
+			background: lightgray;
+			margin:50px 100px;
+		}
+		#move a{
+			display: inline-block;
+			width: 60px;
+			height: 60px;
+			margin: 10px;
+			margin-left: 20px;
+			text-decoration: none;
+			background: white;
+			position: relative;
+		}
+		#move a i{
+			position: absolute;
+			top:-5px;
+		}
+		#move a i img{
+			width: 30px;
+			height: 30px;
+			margin:5px 15px;
+		}
+		#move a p{
+			color: #00bb9c;
+			margin:38px 17px;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div id="move">
+		<a href="">
+			<i><img src="img/weibo.png" alt=""></i>
+			<p>微博</p>
+		</a>
+		<a href="">
+			<i><img src="img/weibo.png" alt=""></i>
+			<p>微博</p>
+		</a>
+		<a href="">
+			<i><img src="img/weibo.png" alt=""></i>
+			<p>微博</p>
+		</a>
+		<a href="">
+			<i><img src="img/weibo.png" alt=""></i>
+			<p>微博</p>
+		</a>
+		<a href="">
+			<i><img src="img/weibo.png" alt=""></i>
+			<p>微博</p>
+		</a>
+		<a href="">
+			<i><img src="img/weibo.png" alt=""></i>
+			<p>微博</p>
+		</a>
+		<a href="">
+			<i><img src="img/weibo.png" alt=""></i>
+			<p>微博</p>
+		</a>
+		<a href="">
+			<i><img src="img/weibo.png" alt=""></i>
+			<p>微博</p>
+		</a>
+	</div>
+	<script src="move.js"></script>
+	<script>
+		window.onload = function(){
+
+			var a_array = document.getElementById('move').getElementsByTagName('a');
+			
+			for(var j=0,len=a_array.length;j<len;j++){
+				
+				a_array[j].onmouseenter = function(){
+					var _this = this.getElementsByTagName('i')[0];
+					startMove(_this,{top:-20,opacity:0},function(){
+						_this.style.top = 5 + 'px';
+						startMove(_this,{top:-5,opacity:100});
+					});
+					
+				}
+
+			}
+		}
+	</script>
+</body>
+</html>
