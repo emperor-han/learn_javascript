@@ -1,0 +1,131 @@
+/* public begin*/
+*{
+	margin:0;
+	padding:0;
+} 
+body{
+	font-size:16px;
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+ul{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	color:inherit;
+}
+/* public end*/
+
+/* topMenu begin */
+.topTitle{
+	width:224px;
+	height:40px;
+	line-height:40px;
+	font-size:20px;
+	color:white;
+	padding-left:20px;
+	text-align:left;
+	background:red;
+}
+//the height of li
+$li_height: 30px;
+@mixin box-shadow{
+		box-shadow:0 0 8px #ddd;
+		-moz-box-shadow:0 0 8px #ddd;
+		-webkit-box-shadow: 0 0 8px #ddd;
+	}
+
+.topMenu{
+	border:2px solid red;
+	width:240px;
+	position:relative;
+	li{
+		padding-left:20px;
+		height: $li_height;
+		line-height:$li_height;
+		color:gray;
+		background: url(http://img.mukewang.com/5411027300014f0200220030.jpg) no-repeat right center;
+		&:hover{
+			border:1px solid #ddd;
+			border-right: none;
+			background-image:none;
+			@include box-shadow;
+	        .submenu{
+	        	display: block;
+	        }
+	        span{
+	        	position: relative;
+	        	display: inline-block;
+	        	z-index: 10;
+	        	width: 20px;
+	        	height: $li_height;
+	        	float: right;
+	        	background: #fff;
+	        }
+		}
+	}
+	
+	a:hover{
+		//border:2px solid gray;
+		color:red;
+		text-decoration: underline;
+		//font-weight: bold;
+	}
+	.submenu{
+		width: 715px;
+		border: lightgray;
+		//border:2px solid gray;
+		@include box-shadow;
+		position: absolute;
+		top:0px;
+		left:235px;
+		z-index: 4;
+		background: #fff;
+		display: none;
+	}
+}
+.submenu{
+	.leftDiv{
+		width: 490px;
+		//background: lightgreen;
+		float: left;
+		margin:5px;
+		dl{
+			border-bottom: 1px solid lightgray;
+			overflow: hidden;
+		}
+		dt{
+			float: left;
+			font-size: 16px;
+			padding: 0 8px;
+			text-align: right;
+			a{
+				height: 22px;
+				width: 60px;
+				line-height:22px;
+				display: block;
+				color:red;
+				text-decoration: underline;
+			}
+		}
+		dd{
+			overflow: hidden;
+			a{
+				height: 14px;
+				line-height:14px;
+				font-size: 14px;
+				float: left;
+				border-left: 1px solid gray;
+				padding:0 8px;
+				margin:4px 0;
+			}
+		}
+	}
+    .rightDiv{
+    	width: 200px;
+		background: gray;
+		float: left;
+		margin:5px;
+    }
+}
+/* topMenu end */
